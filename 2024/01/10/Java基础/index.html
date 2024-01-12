@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>伊甸园</title>
+  <title>Java基础 | 伊甸园</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,124 +167,104 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>放码过来</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
+      
 <section id="intro">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2024/01/10/Java基础/">Java基础</a></h3>
-                    <span>
-                        <span class="post-meta">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
       <time datetime="2024-01-10T13:41:44.000Z" itemprop="datePublished">
           2024-01-10
       </time>
     
 </span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        由于我是中途写的，所以我不知道标号是啥了，所以就先这么写吧
-多态好处：提高代码复用性，有利于代码的维护
-多态是建立在封装和继承的基础之上的
-方法的多态重写和重载就体现了多态
-对象的多态1.一个对象的编译类型和运行类型可以不一致
-12Animal animal =new Dog();//Animal是父类，Dog是子类
+                <h1>Java基础</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>由于我是中途写的，所以我不知道标号是啥了，所以就先这么写吧</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>好处：提高代码复用性，有利于代码的维护</p>
+<p>多态是建立在封装和继承的基础之上的</p>
+<h5 id="方法的多态"><a href="#方法的多态" class="headerlink" title="方法的多态"></a>方法的多态</h5><p>重写和重载就体现了多态</p>
+<h5 id="对象的多态"><a href="#对象的多态" class="headerlink" title="对象的多态"></a>对象的多态</h5><p>1.一个对象的编译类型和运行类型可以不一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line"><span class="comment">//Animal是父类，Dog是子类</span></span><br></pre></td></tr></table></figure>
 
-animal的编译类型是Animal，运行类型是Dog。将父类的引用指向子类的对象
-2.编译类型在定义对象时就确定了，
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2024/01/10/Java基础/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
+<p>animal的编译类型是Animal，运行类型是Dog。将父类的引用指向子类的对象</p>
+<p>2.编译类型在定义对象时就确定了，不能改变</p>
+<p>3.运行类型是能改变的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">animal =<span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br></pre></td></tr></table></figure>
+
+<p>运行类型变为了Cat，编译类型仍然是Animal</p>
+<p>4.编译类型看等号的左边，运行类型看等号的右边</p>
+<h6 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;动物在叫唤&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;小狗狗叫&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;小猫猫叫&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Animal animal=<span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">        animal.cry();</span><br><span class="line">        animal=<span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">        animal.cry();<span class="comment">//重新指向</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时候先输出狗叫，后输出猫叫</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2024/01/10/柳暗花明又一村/">柳暗花明又一村</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2024-01-10T10:55:58.000Z" itemprop="datePublished">
-          2024-01-10
-      </time>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        我的第一篇博客1.1 为什么我要写博客    自幼以来，我常常能在网页上浏览到其他大佬所制作的精美网站。小时候的我，谈不上在意这些枯燥的网页知识，但精美绝伦的网页总能给我带来极佳的视觉享受。到了高中、大学，接触的博客越来越多，一开始是百度贴吧之类的帖子， 后来逐渐用上了知乎，CSDN等网站获取知识，现在几乎每天都要浏览别人写的博客，算法啊，解题步骤之类的。
-    最近，我迷上了别人写的博客，心中的欲望油然而生，我也幻想着什么时候能够自
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2024/01/10/柳暗花明又一村/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          
-          
-        </nav>
+    
+    <a class="pull-right" href="/2024/01/10/%E6%9F%B3%E6%9A%97%E8%8A%B1%E6%98%8E%E5%8F%88%E4%B8%80%E6%9D%91/">
+        柳暗花明又一村 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>We briefly staggered, and the tide ebbed at the end, paying tribute to this meeting.</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
+
 
       
 <!-- ============================ Footer =========================== -->

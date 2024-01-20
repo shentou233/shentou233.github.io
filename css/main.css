@@ -2449,7 +2449,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #0aff17;
+  background: #4491b5;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2492,4 +2492,10 @@ header.header {
   .sidebar-dimmer {
     display: none;
   }
+}
+body {
+  background-image: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }

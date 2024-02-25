@@ -19,27 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="致L：     成年来的还真慢啊，好不容易熬过了第十八个年头（十七还是十八，我数学不好）总算踏入了成年人的殿堂，     虽然生日还没到，但礼物已经收到了，说实话我真的特别感动，这用心程度是我见过最好的一次了，去年那个糟糕的生日暂且不提，再往前看，生日我甚至给别人送礼物，离谱之离谱。以前深交的朋友也不是很多，他们不至于送我礼物的，也过惯了家里的生日，无非就是蛋糕加唱歌双重奏，儿时对蛋糕的渴望现在已">
+    <meta name="description" content="串的匹配算法BF——暴力算法KMP——看猫片算法开门见山，咱就不扯这扯那的了 求最长相等前后缀首先我们需要知道两个概念：前缀和后缀 什么是前缀呢，这里我们拿子串aabaaf来举例。前缀是指不包含尾字母的字串的所有情况，a、aa、aab、aaba、aabaa这五个字串均为原字串的前缀字串；同理，后缀是指不包含首字母的字串的所有情况，f、af、aaf、baaf、abaaf这五个字串均为原字串的后缀字串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="成年前的最后一封信">
-<meta property="og:url" content="http://example.com/2024/01/25/%E6%88%90%E5%B9%B4%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%B0%81%E4%BF%A1/index.html">
+<meta property="og:title" content="数据结构——串相关算法">
+<meta property="og:url" content="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="伊甸园">
-<meta property="og:description" content="致L：     成年来的还真慢啊，好不容易熬过了第十八个年头（十七还是十八，我数学不好）总算踏入了成年人的殿堂，     虽然生日还没到，但礼物已经收到了，说实话我真的特别感动，这用心程度是我见过最好的一次了，去年那个糟糕的生日暂且不提，再往前看，生日我甚至给别人送礼物，离谱之离谱。以前深交的朋友也不是很多，他们不至于送我礼物的，也过惯了家里的生日，无非就是蛋糕加唱歌双重奏，儿时对蛋糕的渴望现在已">
+<meta property="og:description" content="串的匹配算法BF——暴力算法KMP——看猫片算法开门见山，咱就不扯这扯那的了 求最长相等前后缀首先我们需要知道两个概念：前缀和后缀 什么是前缀呢，这里我们拿子串aabaaf来举例。前缀是指不包含尾字母的字串的所有情况，a、aa、aab、aaba、aabaa这五个字串均为原字串的前缀字串；同理，后缀是指不包含首字母的字串的所有情况，f、af、aaf、baaf、abaaf这五个字串均为原字串的后缀字串">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-25T12:11:16.000Z">
-<meta property="article:modified_time" content="2024-01-25T13:05:15.633Z">
+<meta property="article:published_time" content="2024-02-01T02:13:07.000Z">
+<meta property="article:modified_time" content="2024-02-01T03:15:58.253Z">
 <meta property="article:author" content="XuSpring">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2024/01/25/%E6%88%90%E5%B9%B4%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%B0%81%E4%BF%A1/">
+<link rel="canonical" href="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/01/25/%E6%88%90%E5%B9%B4%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%B0%81%E4%BF%A1/","path":"2024/01/25/成年前的最后一封信/","title":"成年前的最后一封信"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/","path":"2024/02/01/数据结构——串相关算法/","title":"数据结构——串相关算法"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>成年前的最后一封信 | 伊甸园</title>
+<title>数据结构——串相关算法 | 伊甸园</title>
   
 
 
@@ -99,7 +99,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -112,6 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">串的匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BF%E2%80%94%E2%80%94%E6%9A%B4%E5%8A%9B%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">BF——暴力算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E2%80%94%E2%80%94%E7%9C%8B%E7%8C%AB%E7%89%87%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">KMP——看猫片算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E6%9C%80%E9%95%BF%E7%9B%B8%E7%AD%89%E5%89%8D%E5%90%8E%E7%BC%80"><span class="nav-number">1.2.1.</span> <span class="nav-text">求最长相等前后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82next%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.2.</span> <span class="nav-text">求next数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0next%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">代码实现next数组</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -154,7 +155,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/25/%E6%88%90%E5%B9%B4%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%B0%81%E4%BF%A1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,12 +168,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="成年前的最后一封信 | 伊甸园">
+      <meta itemprop="name" content="数据结构——串相关算法 | 伊甸园">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          成年前的最后一封信
+          数据结构——串相关算法
         </h1>
 
         <div class="post-meta-container">
@@ -184,7 +185,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-01-25 20:11:16 / 修改时间：21:05:15" itemprop="dateCreated datePublished" datetime="2024-01-25T20:11:16+08:00">2024-01-25</time>
+      <time title="创建时间：2024-02-01 10:13:07 / 修改时间：11:15:58" itemprop="dateCreated datePublished" datetime="2024-02-01T10:13:07+08:00">2024-02-01</time>
     </span>
 
   
@@ -196,16 +197,27 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>致L：</p>
-<p>    成年来的还真慢啊，好不容易熬过了第十八个年头（十七还是十八，我数学不好）总算踏入了成年人的殿堂，</p>
-<p>    虽然生日还没到，但礼物已经收到了，说实话我真的特别感动，这用心程度是我见过最好的一次了，去年那个糟糕的生日暂且不提，再往前看，生日我甚至给别人送礼物，离谱之离谱。以前深交的朋友也不是很多，他们不至于送我礼物的，也过惯了家里的生日，无非就是蛋糕加唱歌双重奏，儿时对蛋糕的渴望现在已变成稍稍厌恶了。</p>
-<p>    啊啊啊啊啊啊啊啊啊啊啊真的很用心诶，特别是那封信，字真的很好看啊，还有画和立体字QAQ！！！艺术氛围拉满，很久没收到（或者说几乎没）手绘手写的贺卡了！！！（平复躁动的心）（深呼吸）（大脑飞速旋转）还有钢琴，我一开始以为是那种模型，我拆开盒子的第一下我就看到它了，但没想到按一下还真的发出声音来了，惊呆了！虽然我唱歌跑调但那不代表我弹琴跑调是吧，这回不需要库乐队了，整实物就好了！嘿嘿。我还是这个寒假买完大衣准备搞个项链戴戴的，怕不是你有读心术，这都悟出来了！！不得不说，款式酷酷的，妥妥机械风。</p>
-<p>    然后吧，我想对自己一个总结，不是我自己的生活，而是我们俩之间的。这75天里小吵偶尔也有，有时是我嘴笨，又有时是我没考虑到，凡此种种，无非都是我道歉然后找出错误，又或者是你对我的期望从一开始的高逐渐变低直至失望，挺惭愧的，每次都说改变，到最后却还是这么个样子，总感觉没把每一件事做好，总感觉自己处处不着调，也不算是贬低自己吧，是对这些天来的一个深刻体悟。我觉得根本在于我没有把握好自我与二者之间的关系，我记得你之前说过你并不是在乎我怎么样怎么样好、成绩多好等等，山外有山、人外有人嘛，更在意的是我对你的态度。是这样的，我也尝试，慢慢尝试，做一件事想半天，虽然说最后导致的结局大差人意；嘴说不好话却又时常说岔嘴，惹得你生半天闷气。</p>
-<p>    这么看来确实是我不成熟的体现，过了这么久我貌似发现是我给自己的学习压力太大了，也不知道能不能这么说，能给我个答复不？每天日复一日的算法，搞代码，头都敲昏了，但我也并不努力，我也玩，我现在对于自己的理解还是一知半解的，看似努力其实啥都没学到，我觉得你还是比较理性的（答复*2）你还记得放假前一天晚上吗，我难过的要死，其实并不是因为未来有多迷茫，以后怎么困难我心里清楚，但我们俩以后走的方向却是未知的，也许是不同的城市，也许是不同的学历，一想到这个我就更加迷茫，当然每个人走的路都是自己选择的，我肯定希望你考到更大的城市，我也想到更大的城市去工作，现在也做不了担保，我只能缓慢前行，迎难而上了。</p>
-<p>    一份残缺而又浅显的总结算是写好了，语言组织的不是很好，真的太久没写这种信了，这也不算信，仿信。啊啊啊啊写的一塌糊涂，原谅我的章法……</p>
-<p>                                                                                                                                 2024年1月25日</p>
-<p>                                                                                                                                                许春升</p>
-
+    <div class="post-body" itemprop="articleBody"><h1 id="串的匹配算法"><a href="#串的匹配算法" class="headerlink" title="串的匹配算法"></a>串的匹配算法</h1><h2 id="BF——暴力算法"><a href="#BF——暴力算法" class="headerlink" title="BF——暴力算法"></a>BF——暴力算法</h2><h2 id="KMP——看猫片算法"><a href="#KMP——看猫片算法" class="headerlink" title="KMP——看猫片算法"></a>KMP——看猫片算法</h2><p>开门见山，咱就不扯这扯那的了</p>
+<h3 id="求最长相等前后缀"><a href="#求最长相等前后缀" class="headerlink" title="求最长相等前后缀"></a>求最长相等前后缀</h3><p>首先我们需要知道两个概念：<strong>前缀</strong>和<strong>后缀</strong></p>
+<p>什么是前缀呢，这里我们拿子串aabaaf来举例。<strong>前缀是指不包含尾字母的字串的所有情况</strong>，a、aa、aab、aaba、aabaa这五个字串均为原字串的前缀字串；同理，<strong>后缀是指不包含首字母的字串的所有情况</strong>，f、af、aaf、baaf、abaaf这五个字串均为原字串的后缀字串。</p>
+<p>下面我们来求最长相等前后缀，我们从子串的首字母开始遍历，用 l 表示最长相等前后缀。</p>
+<ul>
+<li><p>a：显而易见，既无前缀也无后缀，故l&#x3D;0</p>
+</li>
+<li><p>aa：前缀和后缀均为a，故l&#x3D;1</p>
+</li>
+<li><p>aab：前缀有a、aa，后缀有b，ab，均不相等，故l&#x3D;0</p>
+</li>
+<li><p>aaba：同理，l&#x3D;1</p>
+</li>
+<li><p>aabaa：l&#x3D;2</p>
+</li>
+<li><p>aabaaf：l&#x3D;0</p>
+</li>
+</ul>
+<p>现在我们就得到了一个前缀表：010120</p>
+<h3 id="求next数组"><a href="#求next数组" class="headerlink" title="求next数组"></a>求next数组</h3><p>求next数组的方式有很多，有的直接拿前缀表当作next数组，有的将前缀表右移等等。<strong>严蔚敏的数据结构C语言版</strong>上面的next数组则是将前缀表整体右移然后再加一，next数组的第一位始终为0。那么上面我们所求的前缀表转化为next数组是这样表示的：012123</p>
+<h3 id="代码实现next数组"><a href="#代码实现next数组" class="headerlink" title="代码实现next数组"></a>代码实现next数组</h3>
     </div>
 
     
@@ -218,13 +230,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/01/24/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/" rel="prev" title="摄影后期">
-                  <i class="fa fa-angle-left"></i> 摄影后期
+                <a href="/2024/01/25/%E6%88%90%E5%B9%B4%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%B0%81%E4%BF%A1/" rel="prev" title="成年前的最后一封信">
+                  <i class="fa fa-angle-left"></i> 成年前的最后一封信
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" rel="next" title="数据结构——串相关算法">
-                  数据结构——串相关算法 <i class="fa fa-angle-right"></i>
+                <a href="/2024/02/23/%E5%AF%92%E5%81%87%E4%B9%8B%E7%BB%9D%E5%94%B1/" rel="next" title="寒假之绝唱">
+                  寒假之绝唱 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

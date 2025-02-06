@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Linux第一章linux目录结构linux的目录结构是一个树形结构，win系统可以拥有多个盘符，但是linux没有盘符这个概念，只有一个根目录”&#x2F;“所有文件都在它下面。 在linux系统中，路径之间的层级关系使用”&#x2F;“来表示，而在win系统中，路径之间的层级关系使用“\”来表示。 1&#x2F;usr&#x2F;local&#x2F;hello.txt  linux命令入门通用格式在linux中，命令都有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="伊甸园">
+<meta property="og:url" content="http://example.com/2025/02/06/Linux/index.html">
+<meta property="og:site_name" content="伊甸园">
+<meta property="og:description" content="Linux第一章linux目录结构linux的目录结构是一个树形结构，win系统可以拥有多个盘符，但是linux没有盘符这个概念，只有一个根目录”&#x2F;“所有文件都在它下面。 在linux系统中，路径之间的层级关系使用”&#x2F;“来表示，而在win系统中，路径之间的层级关系使用“\”来表示。 1&#x2F;usr&#x2F;local&#x2F;hello.txt  linux命令入门通用格式在linux中，命令都有">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-06T07:52:06.323Z">
+<meta property="article:modified_time" content="2024-08-06T03:57:27.887Z">
+<meta property="article:author" content="XuSpring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/02/06/Linux/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/02/06/Linux/","path":"2025/02/06/Linux/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 伊甸园</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">伊甸园</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">XuSpring's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">linux目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux%E5%91%BD%E4%BB%A4%E5%85%A5%E9%97%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">linux命令入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">通用格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cd%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pwd%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">pwd命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">相对路径和绝对路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84%E7%AC%A6"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">特殊路径符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">mkdir命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.8.</span> <span class="nav-text">touch命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cat%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.9.</span> <span class="nav-text">cat命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.10.</span> <span class="nav-text">more命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.11.</span> <span class="nav-text">cp命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.12.</span> <span class="nav-text">mv命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.13.</span> <span class="nav-text">rm命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#which%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.14.</span> <span class="nav-text">which命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.15.</span> <span class="nav-text">find命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grep%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.16.</span> <span class="nav-text">grep命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wc%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.17.</span> <span class="nav-text">wc命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E7%AC%A6%EF%BC%88-%EF%BC%89"><span class="nav-number">1.1.2.18.</span> <span class="nav-text">管道符（|）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#echo%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.19.</span> <span class="nav-text">echo命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7%EF%BC%88"><span class="nav-number">1.1.2.20.</span> <span class="nav-text">反引号（&#96;)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="nav-number">1.1.2.21.</span> <span class="nav-text">重定向符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tail%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.22.</span> <span class="nav-text">tail命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vi-vim%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">1.1.2.23.</span> <span class="nav-text">vi&#x2F;vim编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.2.23.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.2.23.2.</span> <span class="nav-text">工作模式</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XuSpring"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">XuSpring</p>
+  <div class="site-description" itemprop="description">放码过来</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/06/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XuSpring">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="伊甸园">
+      <meta itemprop="description" content="放码过来">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 伊甸园">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-06 15:52:06" itemprop="dateCreated datePublished" datetime="2025-02-06T15:52:06+08:00">2025-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-06 11:57:27" itemprop="dateModified" datetime="2024-08-06T11:57:27+08:00">2024-08-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="linux目录结构"><a href="#linux目录结构" class="headerlink" title="linux目录结构"></a>linux目录结构</h3><p>linux的目录结构是一个树形结构，win系统可以拥有多个盘符，但是linux没有盘符这个概念，只有一个根目录”&#x2F;“所有文件都在它下面。</p>
+<p>在linux系统中，路径之间的层级关系使用”&#x2F;“来表示，而在win系统中，路径之间的层级关系使用“\”来表示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/hello.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="linux命令入门"><a href="#linux命令入门" class="headerlink" title="linux命令入门"></a>linux命令入门</h3><h4 id="通用格式"><a href="#通用格式" class="headerlink" title="通用格式"></a>通用格式</h4><p>在linux中，命令都有其通用的格式：<code>command [-options][parameter] </code></p>
+<ul>
+<li>command：命令本身；</li>
+<li>-options：可选（非必填） 命令的一些选项，可以通过选项控制命令的行为细节；</li>
+<li>parameter：可选（非必填） 命令的参数，多数用于命令的指向目标。</li>
+</ul>
+<h4 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h4><p>ls命令的作用是列出目录下的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> [-a -l -h][linux路径]</span><br></pre></td></tr></table></figure>
+
+<p>如果直接使用ls命令本体，表示以平铺形式，列出当前工作目录下的内容（文件或文件夹）</p>
+<p>当我们启动终端时，系统会默认将目录设置在用户的HOME目录。那么什么是HOME目录呢？每个Linux操作用户在linux系统的个人账户目录。win系统和linux系统均设有用户的HOME账户。</p>
+<ul>
+<li>命令中的参数</li>
+</ul>
+<p>​	路径中可以写上你想查看指定的文件夹，比如<code>ls /</code>表示查看根目录下的所有文件</p>
+<ul>
+<li><p>命令中的选项</p>
+<p>-a：all的意思，即列出全部文件（包含隐藏的文件&#x2F;文件夹）只有通过-a选项才能看到隐藏文件或文件夹</p>
+<p>-l：表示以列表<strong>竖向排列</strong>的形式展示内容b</p>
+<p>-h：表示以易于阅读的形式列出文件的大小，比如Kb,Mb,Gb.注意，h一定要和l一起用才有作用</p>
+</li>
+</ul>
+<p>语法中的选项是可以组合使用的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -la</span><br><span class="line">ls -al</span><br><span class="line">ls -a -l</span><br></pre></td></tr></table></figure>
+
+<p>这三种语法都是成立的</p>
+<h4 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h4><p>更改当前所在的工作目录。cd命令来自英文（change directory）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [linux命令]</span><br></pre></td></tr></table></figure>
+
+<p>如果后面的参数不写，表示回到用户的HOME目录下面。写的话，就表示切换到对应的目录下去。</p>
+<h4 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h4><p>展示当前所在的工作目录。pwd命令来自英文（print work directory）</p>
+<p>pwd无选项，无参数，直接输入即可</p>
+<h4 id="相对路径和绝对路径"><a href="#相对路径和绝对路径" class="headerlink" title="相对路径和绝对路径"></a>相对路径和绝对路径</h4><p>绝对路径是以<strong>根目录</strong>为起点，描述路径的一种写法，路径描述以&#x2F;开头</p>
+<p>相对路径是以<strong>当前目录</strong>为起点，描述路径的一种写法，路径描述无需以&#x2F;开头</p>
+<h4 id="特殊路径符"><a href="#特殊路径符" class="headerlink" title="特殊路径符"></a>特殊路径符</h4><p>. 表示当前目录，比如 <code>cd ./Desktop</code>表示切换到当前目录下的Desktop目录内，和cd Desktop效果一致</p>
+<p>.. 表示上一级目录，比如 <code>cd ..</code>即可切换到上一级目录，<code>cd ../..</code>切换到上二级的目录</p>
+<p>~ 表示HOME目录，比如<code>cd~</code>即可切换到HOME目录</p>
+<h4 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h4><p>创建新的目录（文件夹）。mkdir命令来自英文（make directory）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [-p] linux路径</span><br></pre></td></tr></table></figure>
+
+<p>参数必填，即创建文件夹的路径，相对路径或绝对路径均可</p>
+<p>-p可选，表示自动创建不存在的父目录，适用于创建连续多层级的目录。比如说</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p Desktop/1/2/3</span><br></pre></td></tr></table></figure>
+
+<p>1、2和3文件夹都是之前没有的，如果不加-p，那么会报错，因为这些文件夹属于多层级的目录。</p>
+<p>注意：创建文件夹需要修改权限，请确保操作均在HOME目录内</p>
+<h4 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h4><p>创建文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch linux路径</span><br></pre></td></tr></table></figure>
+
+<p>参数必填，即创建文件的路径，相对路径或绝对路径均可</p>
+<h4 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h4><p>查看文件的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat linux路径</span><br></pre></td></tr></table></figure>
+
+<p>参数必填，即需要查看文件的路径，相对路径或绝对路径均可</p>
+<h4 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h4><p>more同样可以查看文件内容，与cat不同的是cat是直接将内容全部显示出来。而more支持翻页。</p>
+<p>more的语法与cat类似，这里就不过多赘述了。</p>
+<h4 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h4><p>cp命令可以用于复制文件&#x2F;文件夹，cp命令来自英文单词：copy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [-r] 参数1 参数2</span><br></pre></td></tr></table></figure>
+
+<p>-r：可选，用于复制文件夹使用，表示递归</p>
+<p>参数1：linux路径，表示被复制的文件或文件夹</p>
+<p>参数2：linux路径，表示要复制去的地方</p>
+<h4 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h4><p>移动文件&#x2F;文件夹，mv命令来自英文单词：move</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 参数1 参数2</span><br></pre></td></tr></table></figure>
+
+<p>参数1：linux路径，表示被移动的文件或文件夹</p>
+<p>参数2：linux路径，表示要移动去的地方，如果目标不存在，则进行改名</p>
+<h4 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h4><p>删除文件&#x2F;文件夹，rm命令来自英文单词：remove</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [-r -f] 参数1 参数2 ……参数N</span><br></pre></td></tr></table></figure>
+
+<p>-r：删除文件夹</p>
+<p>-f：表示force，强制删除，不会弹出提示确认信息</p>
+<p>​	普通用户删除内容不会弹出提示，只有root管理员用户删除内容会有提示，所以一般用户	用不到-f选项</p>
+<p>参数1、参数2……：表示要删除的文件或文件夹路径，按照空格隔开</p>
+<p>通配符（*）：匹配任意内容</p>
+<ul>
+<li><code>aaa*</code>：表示匹配任意以aaa开头的内容</li>
+<li><code>*aaa</code>：表示匹配任意以aaa结尾的内容</li>
+<li><code>*aaa*</code>：表示匹配任何包含aaa的内容</li>
+</ul>
+<h4 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a>which命令</h4><p>查看所使用的一系列命令的程序文件存放在哪里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which 要查找的命令</span><br></pre></td></tr></table></figure>
+
+<p>比如 <code>which cd</code>可以查看cd命令的程序文件存放的位置</p>
+<h4 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h4><p>搜索指定文件</p>
+<ul>
+<li><p>按文件名查找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find 起始路径 -name ”被查找文件名“</span><br></pre></td></tr></table></figure>
+
+<p>同样，查找命令中也能使用通配符来做模糊匹配</p>
+</li>
+<li><p>按文件大小查找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find 起始路径 -size +n [KMG]</span><br></pre></td></tr></table></figure>
+
+<p>+&#x2F;-：表示大于和小于</p>
+<p>n：表示大小数字</p>
+<p>KMG：表示大小单位，kb&#x2F;mb&#x2F;gb</p>
+<p>实例：<br>查找小于100kb的文件：find &#x2F; -size -10k</p>
+</li>
+</ul>
+<h4 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h4><p>通过关键字过滤文件行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [-n] 关键字 文件路径</span><br></pre></td></tr></table></figure>
+
+<p>-n：表示在结果中显示匹配和行的行号</p>
+<p>关键字：表示过滤的关键字，带有空格或其他特殊符号，建议使用” “将关键字包围起来</p>
+<p>文件路径：表示要过滤内容的文件路径，可作为内容输入端口</p>
+<p>示例：</p>
+<p>比如说我们在文档中写若干行文字，我们将 ”a“ 作为关键字，那么这行命令就会输出包含关键字 a 的所有行，并将关键字标红。此外，如果加上-n，那么会显示该句话的行数。</p>
+<h4 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h4><p>统计文件的行数、单词数量等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [-c -m -l -w] 文件路径</span><br></pre></td></tr></table></figure>
+
+<p>-c：统计bytes数量</p>
+<p>-m：统计字符数量</p>
+<p>-l：统计行数</p>
+<p>-w：统计单词数量</p>
+<p>文件路径：被统计的文件</p>
+<h4 id="管道符（-）"><a href="#管道符（-）" class="headerlink" title="管道符（|）"></a>管道符（|）</h4><p>将管道符左边命令的结果作为右边命令的输入</p>
+<h4 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h4><p>在命令行内输出指定内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 输出的内容</span><br></pre></td></tr></table></figure>
+
+<p>如果内容带有空格或\等特殊符号，建议用双引号包围起来</p>
+<h4 id="反引号（"><a href="#反引号（" class="headerlink" title="反引号（&#96;)"></a>反引号（&#96;)</h4><p>被它包围的内容将会作为命令执行</p>
+<h4 id="重定向符"><a href="#重定向符" class="headerlink" title="重定向符"></a>重定向符</h4><p><code>&gt;</code>：将左边命令的结果覆盖写入到符号右侧的文件</p>
+<p><code>&gt;&gt;</code>：将左侧命令的结果追加写入到符号右侧的文件</p>
+<h4 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h4><p>查看文件尾部内容，跟踪文件的最新更改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail [-f -num] linux路径</span><br></pre></td></tr></table></figure>
+
+<p>-f：表示持续跟踪。终端指令不会断掉，只要操作者做了更改，就立马会检测到文件的更改</p>
+<p>-num：查看尾部多少行，不写默认为10行。注意-num在实际写的时候num要写成指定的数字</p>
+<h4 id="vi-vim编辑器"><a href="#vi-vim编辑器" class="headerlink" title="vi&#x2F;vim编辑器"></a>vi&#x2F;vim编辑器</h4><h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>vi是visual interface的简称，是linux中最经典的文本编辑器。</p>
+<p>vim是vi的加强版本，兼容vi的所有指令，不仅能编辑文本，还具有shell程序编辑的功能，以不同颜色的字体来辨别语法的正确性。</p>
+<h5 id="工作模式"><a href="#工作模式" class="headerlink" title="工作模式"></a>工作模式</h5><ul>
+<li><p>命令模式</p>
+<p>所敲的按键编辑器都理解为命令，不能自由进行命令编辑</p>
+</li>
+<li><p>输入模式</p>
+<p>对文件内容进行自由编辑</p>
+</li>
+<li><p>底线命令模式</p>
+</li>
+</ul>
+<p>​		通常用于文件的保存退出</p>
+<p>当我们进入vim时，默认进入到命令模式，可以通过一定的指令切换成输入模式。当然也可以从输入模式切换回命令模式。此外，还能通过命令模式进入底线命令模式。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/06/IO%E6%B5%81/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/02/06/Git/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-java"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">XuSpring</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

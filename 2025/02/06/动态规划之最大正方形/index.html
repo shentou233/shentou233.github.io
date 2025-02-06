@@ -19,25 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="放码过来">
-<meta property="og:type" content="website">
+    <meta name="description" content="动态规划之最大正方形在一个由 &#39;0&#39; 和 &#39;1&#39; 组成的二维矩阵内，找到只包含 &#39;1&#39; 的最大正方形，并返回其面积（力扣221） 题目描述很简短，这题主要卡的地方在dp数组怎么建立。一开始的想法是dp[i][j]表示从左上角顶点到i，j点处最大正方形的边长，后来发现">
+<meta property="og:type" content="article">
 <meta property="og:title" content="伊甸园">
-<meta property="og:url" content="http://example.com/archives/2024/01/index.html">
+<meta property="og:url" content="http://example.com/2025/02/06/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/index.html">
 <meta property="og:site_name" content="伊甸园">
-<meta property="og:description" content="放码过来">
+<meta property="og:description" content="动态规划之最大正方形在一个由 &#39;0&#39; 和 &#39;1&#39; 组成的二维矩阵内，找到只包含 &#39;1&#39; 的最大正方形，并返回其面积（力扣221） 题目描述很简短，这题主要卡的地方在dp数组怎么建立。一开始的想法是dp[i][j]表示从左上角顶点到i，j点处最大正方形的边长，后来发现">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-06T07:56:35.479Z">
+<meta property="article:modified_time" content="2024-12-10T14:09:45.486Z">
 <meta property="article:author" content="XuSpring">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/2024/01/">
+<link rel="canonical" href="http://example.com/2025/02/06/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2024/01/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/02/06/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/","path":"2025/02/06/动态规划之最大正方形/","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 伊甸园</title>
+<title> | 伊甸园</title>
   
 
 
@@ -70,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">伊甸园</h1>
+      <p class="site-title">伊甸园</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">XuSpring's Blog</p>
@@ -97,7 +99,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -110,6 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2"><span class="nav-number">1.</span> <span class="nav-text">动态规划之最大正方形</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -141,69 +144,95 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 19 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/06/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XuSpring">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="伊甸园">
+      <meta itemprop="description" content="放码过来">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 伊甸园">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-06 15:56:35" itemprop="dateCreated datePublished" datetime="2025-02-06T15:56:35+08:00">2025-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-10 22:09:45" itemprop="dateModified" datetime="2024-12-10T22:09:45+08:00">2024-12-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="动态规划之最大正方形"><a href="#动态规划之最大正方形" class="headerlink" title="动态规划之最大正方形"></a>动态规划之最大正方形</h1><p>在一个由 <code>&#39;0&#39;</code> 和 <code>&#39;1&#39;</code> 组成的二维矩阵内，找到只包含 <code>&#39;1&#39;</code> 的最大正方形，并返回其面积（力扣221）</p>
+<p>题目描述很简短，这题主要卡的地方在dp数组怎么建立。一开始的想法是<code>dp[i][j]</code>表示从左上角顶点到i，j点处最大正方形的边长，后来发现</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-01-10T21:41:44+08:00"
-              content="2024-01-10">
-          01-10
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/01/10/Java%E5%9F%BA%E7%A1%80/" itemprop="url">
-          <span itemprop="name">Java基础</span>
-        </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/06/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E9%97%B4%E9%9A%94%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-01-10T18:55:58+08:00"
-              content="2024-01-10">
-          01-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/01/10/%E6%9F%B3%E6%9A%97%E8%8A%B1%E6%98%8E%E5%8F%88%E4%B8%80%E6%9D%91/" itemprop="url">
-          <span itemprop="name">柳暗花明又一村</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Robot类介绍继承1class Robot : public Plug  Robot是Plug的子类。 私有属性1234567private:Object robot_plate, robot_hold;			&#x2F;&#x2F;机器人盘子里的物体（为0表示盘子空的），手（0表示空的）uint robot_location; 				   &#x2F;&#x2F;机器人的位置uint object_num;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="伊甸园">
+<meta property="og:url" content="http://example.com/2025/02/06/%E5%AE%B6%E5%BA%AD%E4%BB%BF%E7%9C%9F%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A%E4%B9%8BRobot/index.html">
+<meta property="og:site_name" content="伊甸园">
+<meta property="og:description" content="Robot类介绍继承1class Robot : public Plug  Robot是Plug的子类。 私有属性1234567private:Object robot_plate, robot_hold;			&#x2F;&#x2F;机器人盘子里的物体（为0表示盘子空的），手（0表示空的）uint robot_location; 				   &#x2F;&#x2F;机器人的位置uint object_num;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-06T07:50:45.627Z">
+<meta property="article:modified_time" content="2025-01-22T12:03:47.853Z">
+<meta property="article:author" content="XuSpring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/02/06/%E5%AE%B6%E5%BA%AD%E4%BB%BF%E7%9C%9F%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A%E4%B9%8BRobot/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/02/06/%E5%AE%B6%E5%BA%AD%E4%BB%BF%E7%9C%9F%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A%E4%B9%8BRobot/","path":"2025/02/06/家庭仿真代码注释之Robot/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 伊甸园</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">伊甸园</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">XuSpring's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Robot"><span class="nav-number">1.</span> <span class="nav-text">Robot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">1.1.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">私有属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AnalyseDomain"><span class="nav-number">1.2.1.</span> <span class="nav-text">AnalyseDomain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DowithVectorDomain"><span class="nav-number">1.2.2.</span> <span class="nav-text">DowithVectorDomain</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">解析关键词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StoreObject"><span class="nav-number">1.2.3.</span> <span class="nav-text">StoreObject</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XuSpring"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">XuSpring</p>
+  <div class="site-description" itemprop="description">放码过来</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/06/%E5%AE%B6%E5%BA%AD%E4%BB%BF%E7%9C%9F%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A%E4%B9%8BRobot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XuSpring">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="伊甸园">
+      <meta itemprop="description" content="放码过来">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 伊甸园">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-06 15:50:45" itemprop="dateCreated datePublished" datetime="2025-02-06T15:50:45+08:00">2025-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-22 20:03:47" itemprop="dateModified" datetime="2025-01-22T20:03:47+08:00">2025-01-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Robot"><a href="#Robot" class="headerlink" title="Robot"></a>Robot</h1><h2 id="类介绍"><a href="#类介绍" class="headerlink" title="类介绍"></a>类介绍</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Robot</span> : <span class="keyword">public</span> Plug</span><br></pre></td></tr></table></figure>
+
+<p>Robot是Plug的子类。</p>
+<h3 id="私有属性"><a href="#私有属性" class="headerlink" title="私有属性"></a>私有属性</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span>:</span><br><span class="line">Object robot_plate, robot_hold;			<span class="comment">//机器人盘子里的物体（为0表示盘子空的），手（0表示空的）</span></span><br><span class="line">uint robot_location; 				   <span class="comment">//机器人的位置</span></span><br><span class="line">uint object_num; 				       <span class="comment">//物体数量</span></span><br><span class="line">string sexp_buf; 				       <span class="comment">//存储从服务器接收的s-expression形式的环境表</span></span><br><span class="line">vector&lt;Object&gt; vector_object; 		    <span class="comment">//存物体, 0为机器人 </span></span><br><span class="line">vector&lt;Instruction&gt; vector_ins; 		<span class="comment">//存指令</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="AnalyseDomain"><a href="#AnalyseDomain" class="headerlink" title="AnalyseDomain"></a>AnalyseDomain</h3><p><strong>接受信息表里的信息，将它们储存在我们自己设定的容器中</strong>（预处理阶段）</p>
+<p>domain：环境表结构体（可在global中看到）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//环境表结构体</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">domain</span> &#123; 		<span class="comment">//从服务器获得的环境表元素基本结构</span></span><br><span class="line">	string keyword; 	<span class="comment">//关键字</span></span><br><span class="line">	string id; 			<span class="comment">//物体id</span></span><br><span class="line">	string other; 		<span class="comment">//其他信息，没有则在处理的时候直接不去处理</span></span><br><span class="line">	<span class="keyword">friend</span> std::ostream &amp; <span class="keyword">operator</span>&lt;&lt; (std::ostream &amp;os, <span class="type">const</span> domain &amp;dom); 		<span class="comment">//定义友元只为输出这个结构体</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>domaintype:枚举类型（env和ins两种类型）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">DomainType</span> 			<span class="comment">//环境表和任务表中都含有domain结构体，所以会有不同的处理</span></span><br><span class="line">&#123;</span><br><span class="line">	DOMAINTYPE_NULL, 		</span><br><span class="line">	DOMAINTYPE_ENV, 		<span class="comment">//环境表中读取的</span></span><br><span class="line">	DOMAINTYPE_INS 			<span class="comment">//任务表中</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>chosen</code>标记当前正在处理 <code>domain</code> 的第几个字段。chosen先从1开始。由<code>(:domain (at 0 0) (sort 1 human) (hold 0))</code>可以看出，domain有三个字段。</p>
+<p>如果 <code>sx</code> 非空，则跳到sx的下一个节点 。  </p>
+<p>否则，遍历 S-expression 的每个节点，逐个处理内容。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    tmp_domain.keyword = sx_tmp-&gt;val;</span><br><span class="line">    sx_tmp = sx_tmp-&gt;next;</span><br><span class="line">    chosen++;</span><br><span class="line">    <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>若chosen为1，则是第一个字段，将第一个值赋值给 keyword</p>
+</li>
+<li><p>若chosen为2，将第二个值赋值给 id</p>
+</li>
+<li><p>若chosen为3， 将第三个值赋值给 other</p>
+</li>
+</ul>
+<p>每次处理一个完整的 <code>domain</code>，将处理过的链表信息加入 <code>vector_tmp_domain</code>，然后重置chosen为1，将链表指针移动至下一个，继续循环，赋值判断。</p>
+<p>最后这个函数返回值是domain类型的vector容器。</p>
+<h3 id="DowithVectorDomain"><a href="#DowithVectorDomain" class="headerlink" title="DowithVectorDomain"></a>DowithVectorDomain</h3><p><strong>处理容器（vector_tmp_domain）信息里的每一项。</strong></p>
+<p>如果domaintype为env（环境），将机器人先存到容器里，毕竟这个阶段肯定是没有其他物体的。</p>
+<p>如果domaintype为instr（任务），肯定会有一个物体X，先将这个物体存到容器中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;domain&gt;::iterator pr;</span><br></pre></td></tr></table></figure>
+
+<p>pr为表的迭代器，然后遍历所有表，如果某个物体的ID为Y，那么肯定是第二个物体，则再将它存到容器中。</p>
+<h4 id="解析关键词"><a href="#解析关键词" class="headerlink" title="解析关键词"></a>解析关键词</h4><p><strong>注意：下列一切操作都是基于遍历链表的前提</strong></p>
+<p>首先，将X和Y映射到对应vector_tmp_object容器的下标</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (domain_type == DOMAINTYPE_INS) &#123; 	</span><br><span class="line">			<span class="keyword">if</span> (pr-&gt;id == <span class="string">&quot;X&quot;</span>) 		<span class="comment">//是X用,magic number = 0, id与容器索引相关联</span></span><br><span class="line">				id = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (pr-&gt;id == <span class="string">&quot;Y&quot;</span>) 	<span class="comment">//Y, magic number = 1 </span></span><br><span class="line">				id = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果在指令语言下，vector_tmp_object[0]和vector_tmp_object[1]分别表示第一个物体和第二个物体。</p>
+<p>如果在环境语言下，通过atoi函数（它的主要功能是将字符串转换为整数）将X和Y转换成整数，从而得到下标。</p>
+<p>然后，检查一下vector_tmp_object的容量，如果它的容量vec_index比id还小，那么会引发数组越界错误，我们就需要在空缺的那一部分（id-vec_index）补充元素，防止越界。</p>
+<p>下面，通过一个很多分支的if判断来分类关键词。</p>
+<ul>
+<li><p>如果keyword为sortx</p>
+<p>如果是环境语言条件下，那么已经分配过了，于是需要一个空的Object对象tmp去给这个下标的数组内容占位，同时由于占了一个位置，容器的容量vecindex也需要加一。</p>
+<p>这段代码主要的作用还是防止有些物体不是按照1234….顺序递增而导致的下标不符的错误。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (domain_type == DOMAINTYPE_ENV) &#123; 	<span class="comment">//如果是来自指令的则已经分配过了</span></span><br><span class="line">				vector_tmp_object.<span class="built_in">push_back</span>(tmp); 	<span class="comment">//如果是物体分配一个空间</span></span><br><span class="line">				<span class="keyword">if</span> (domain_type == DOMAINTYPE_ENV) </span><br><span class="line">					++vec_index;</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
+
+<p>否则，根据物体的ID分配相应的种类，如HUMAN,PLANT,COUCH等等</p>
+</li>
+<li><p>如果keyword为at</p>
+<p>更新位置</p>
+<ul>
+<li><p>如果id是0，代表机器人</p>
+<p>at表示位置，因此需要更改机器人此刻的位置，使用SetLocation函数，atoi(other.c_str())表示解析位置，并转换成整数。</p>
+</li>
+<li><p>如果id不为0，是普通物体</p>
+</li>
+</ul>
+</li>
+<li><p>如果keyword为color</p>
+<p>根据颜色分配相应的种类</p>
+</li>
+<li><p>如果keyword为type</p>
+<p>分配container</p>
+</li>
+<li><p>如果keyword为inside</p>
+<p>分配装在大物体里面的小物体</p>
+<p>更改两个参数：inside参数和location参数，即小物体在哪个物体里面和小物体此刻的位置</p>
+</li>
+<li><p>如果keyword为on</p>
+<p>分配物体的位置</p>
+</li>
+<li><p>如果keyword为near</p>
+<p>分配物体的位置</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector_tmp_object[id].<span class="built_in">SetPosition</span>(vector_object[id].<span class="built_in">GetPosition</span>() | <span class="built_in">uint</span>(<span class="built_in">atoi</span>(other.<span class="built_in">c_str</span>()))); </span><br></pre></td></tr></table></figure>
+
+<p>这段代码用到了或运算，为了是不覆盖原有的位置状态，合并表示多个位置关系</p>
+</li>
+<li><p>如果keyword为opened</p>
+<p>分配门是开的状态</p>
+</li>
+<li><p>如果keyword为closed</p>
+<p>分配门是关的状态</p>
+</li>
+<li><p>如果keyword为plate</p>
+<ul>
+<li><p>如果id&#x3D;0，没有物体</p>
+</li>
+<li><p>如果id不为0，有物体</p>
+<p>先将物体的id记录在临时创建的Object类对象obj_tmp中，然后再根据obj_tmp设置机器人盘子里的物体。</p>
+</li>
+</ul>
+</li>
+<li><p>如果keyword为hold</p>
+<p>跟上面plate的操作一致。</p>
+</li>
+</ul>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>首先获得手里和盘子里的物体id。</p>
+<p>如果手里的物体不为空，更新机器人手里的物体，将它的id设置成此处遍历到的物品id，然后再将物体的位置更新为机器人的位置。</p>
+<p>盘子里的物体同上。</p>
+<h3 id="StoreObject"><a href="#StoreObject" class="headerlink" title="StoreObject"></a>StoreObject</h3><p>传入信息表以及表的类型（env or ins）</p>
+<p>将<code>vector_tmp_domain</code>容器中的信息按函数<code>DowithVectorDomain</code>的方法塞入<code>vector_tmp_object</code>容器。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p>​                                                                                                   许春升  2025.1.22</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/06/%E5%AE%B6%E5%BA%AD%E4%BB%BF%E7%9C%9F%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A%E4%B9%8BObject/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/02/06/python/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-java"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">XuSpring</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
